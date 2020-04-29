@@ -1,8 +1,8 @@
 #ifndef CHARACTERDATA_HPP
 #define CHARACTERDATA_HPP
 class CharacterData{
-    int id;
-    string name;
+    const int id;
+    const string name;
     bool cheated;
     public:
     CharacterData(const int id,const string& name){
@@ -10,13 +10,14 @@ class CharacterData{
         this -> id = id;
         cheated = false;
     }
-    int idreturn(){
+    int idreturn() const {
         return id;
     }
-    string namereturn(){
+    string namereturn() const {
         return name;
     }
+    //bool game()
     ~CharacterData(){}
-}
+};
 
 #endif
