@@ -9,7 +9,9 @@ public:
     Character(const int,const string&);
     int idreturn();
     string namereturn();
-    static bool game(const int,const bool,const bool);
+    void cheatedset(const bool);
+    bool cheatedreturn();
+    static bool game(const int,Character&,const bool *,const int);
     ~Character();
 };
 #endif

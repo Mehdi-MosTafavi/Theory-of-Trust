@@ -5,9 +5,7 @@ class CharacterData{
     const string name;
     bool cheated;
     public:
-    CharacterData(const int id,const string& name){
-        this -> name = name;
-        this -> id = id;
+    CharacterData(const int i,const string& n): id(i),name(n){
         cheated = false;
     }
     int idreturn() const {
@@ -15,6 +13,13 @@ class CharacterData{
     }
     string namereturn() const {
         return name;
+    }
+    void
+    cheatedset(const bool b = true){
+        cheated = b;
+    }
+    bool cheatedreturn(){
+        return cheated;
     }
     //bool game()
     ~CharacterData(){}
