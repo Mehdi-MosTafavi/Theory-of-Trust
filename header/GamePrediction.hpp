@@ -12,8 +12,10 @@ public:
     preRound = pr ;
     del = de ;
     guess = gue ;
-    charCount = chc ;
-    lastCharCount = charCount ;
+    for (int i = 0 ; i<8 ; i++) {
+      charCount[i]=chc[i] ;
+      lastCharCount[i]=charCount[i];
+    }
     for (int i = 0 ; i<8 ; i++) {
       for (int j = 0 ; j < charCount[i] ; j++) {
         chars.push_back(Character(i)) ; /// niazmande edit (jens)
@@ -99,7 +101,9 @@ public:
         	cout << "\033[31m" << Character::character[i].name << " : " << charCount[i] << "\033[0m" << endl;
       }
     }
-    lastCharCount = charCount ;
+    for (int i = 0 ; i<8 ; i++) {
+      lastCharCount[i]=charCount[i];
+    }
   }
   void preGame(){
     int command = 0 ; // 0 or Wrong-One Step //1-Until End
