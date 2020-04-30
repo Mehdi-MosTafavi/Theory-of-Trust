@@ -51,9 +51,23 @@ public:
     cin >> gue ;
     GamePrediction(pr , de , gue , chc) ;
   }
+  void move(int cnt) {
+    for (int i = 0 ; i<cnt ; i++) {
+      for (int j = 0 ; j<chars.size() ; j++) {
+        for (int r = j+1 ;r<chars.size() ; r++) {
+          bazi(chars[j],chars[r]) ; //// temp , code dar kelas madar neveshte mishavad ///
+        }
+      }
+    }
+  }
+  // bayad design shavad , ebtedaei
+  void print() {
+    
+  }
   void preGame(){
     int command = 0 ; // 0 or Wrong-One Step //1-Until End
     int randeFeli = 0 ;
+    print() ;
     while (randeFeli < preRound) {
       cout << "What is your command : " ;
       cin >> command ;
