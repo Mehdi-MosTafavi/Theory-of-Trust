@@ -94,11 +94,11 @@ public:
         cout << "\t" ;
       }
       if (charCount[i]==lastCharCount[i]) { // name not sure again
-        	cout << "\033[33m" << Character::character[i].name << " : " << charCount[i] << "\033[0m" << endl;
+        	cout << "\033[33m" << Character::character[i].name << " : " << charCount[i] << "\033[0m";
       } else if (charCount[i]>lastCharCount[i]) {
-        	cout << "\033[32m" << Character::character[i].name << " : " << charCount[i] << "\033[0m" << endl;
-      } else (charCount[i]<lastCharCount[i]) {
-        	cout << "\033[31m" << Character::character[i].name << " : " << charCount[i] << "\033[0m" << endl;
+        	cout << "\033[32m" << Character::character[i].name << " : " << charCount[i] << "\033[0m";
+      } else if (charCount[i]<lastCharCount[i]) {
+        	cout << "\033[31m" << Character::character[i].name << " : " << charCount[i] << "\033[0m";
       }
     }
     for (int i = 0 ; i<8 ; i++) {
