@@ -2,7 +2,8 @@
 #define GAMEPREDICTION_H
 class GamePrediction : public GameCompetition {
 public:
-  vector<Character> chars ;
+  vector<Character> chars ; ///// (jens)notSure
+  int lastCharCount[8] ;
   int charCount[8] ;
   int preRound ;
   int del ;
@@ -12,9 +13,10 @@ public:
     del = de ;
     guess = gue ;
     charCount = chc ;
+    lastCharCount = charCount ;
     for (int i = 0 ; i<8 ; i++) {
       for (int j = 0 ; j < charCount[i] ; j++) {
-        chars.push_back(CharacterData(i)) ;
+        chars.push_back(Character(i)) ; /// niazmande edit (jens)
       }
     }
   }
@@ -51,6 +53,25 @@ public:
     cin >> gue ;
     GamePrediction(pr , de , gue , chc) ;
   }
+  void charHandle(int ted) {
+    for (int i = 0 ; i<chars.size() ; i++) {
+      for (int j = i+1 ; j<chars.size() ; j++) {
+        if (chars[i].point()>chars[j].point()) {
+          Character c = chars[i] ; // (jens) notSure
+          chars[i] = chars[j] ;
+          chars[j] = c ;
+        }
+      }
+    }
+    for (int i = chars.size() - ted ; i<chars.size() ; i++) {
+      chars.push_back(Character(chars[i].id)) ;
+      charCount[chars[i].id] += 1 ;
+    }
+    for (int i = 0 ; i<ted ; i++) {
+      charCount[chars[i].id] -= 1 ;
+      chars.erase(chars.begin() + i) ;
+    }
+  }
   void move(int cnt) {
     for (int i = 0 ; i<cnt ; i++) {
       for (int j = 0 ; j<chars.size() ; j++) {
@@ -58,11 +79,27 @@ public:
           bazi(chars[j],chars[r]) ; //// temp , code dar kelas madar neveshte mishavad ///
         }
       }
+      charHandle(del) ;
     }
   }
   // bayad design shavad , ebtedaei
   void print() {
-    
+    for (int i = 0 ; i<8 ; i++) {
+      if (i==4) {
+        cout << endl ;
+      } else if (i==0) {
+      } else {
+        cout << "\t" ;
+      }
+      if (charCount[i]==lastCharCount[i]) { // name not sure again
+        	cout << "\033[33m" << Character::character[i].name << " : " << charCount[i] << "\033[0m" << endl;
+      } else if (charCount[i]>lastCharCount[i]) {
+        	cout << "\033[32m" << Character::character[i].name << " : " << charCount[i] << "\033[0m" << endl;
+      } else (charCount[i]<lastCharCount[i]) {
+        	cout << "\033[31m" << Character::character[i].name << " : " << charCount[i] << "\033[0m" << endl;
+      }
+    }
+    lastCharCount = charCount ;
   }
   void preGame(){
     int command = 0 ; // 0 or Wrong-One Step //1-Until End
