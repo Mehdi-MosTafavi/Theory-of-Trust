@@ -6,9 +6,10 @@ using namespace std;
 #include "header/Character.hpp"
 #include "header/CharacterData.hpp"
 
-Character::Character(const int id,const string& name): ptr(new CharacterData(id,name)){
-cout<<"done";
-}
+//Constructor for playing with user
+Character::Character(const int id,const string& name): ptr(new CharacterData(id,name)){}
+//Playing without user
+Character::Character(const int id): ptr(new CharacterData(id)){}
 Character::~Character(){}
 
 int
@@ -21,11 +22,19 @@ Character::namereturn(){
 }
 void
 Character::cheatedset(const bool b = true){
-    return ptr -> cheatedset(b);
+    ptr -> cheatedset(b);
 }
 bool
 Character::cheatedreturn(){
     return ptr -> cheatedreturn();
+}
+int
+Character::pointreturn(){
+    return ptr -> pointreturn();
+}
+void
+Character::pointset(const int p){
+    ptr -> pointset(p);
 }
 bool
 Character::game(const int id,Character& character,const bool *action,const int size){
@@ -70,7 +79,16 @@ Character::game(const int id,Character& character,const bool *action,const int s
                 return false;
             break; 
             default:
-                
+            if(character.cheatedreturn() == true){
+                return false;
+            }else{
+                if(action[2]==true){
+                    character.cheatedset();
+                    return false;
+                }else{
+                    return action[size-2];
+                }
+            }
             break;
         }
     break;
@@ -85,13 +103,14 @@ Character::game(const int id,Character& character,const bool *action,const int s
     break;
     //Sade
     case 7:
-        if(size < 2){
+        if(size == 1){
             return true;
         }else{
-            if(action[size-2] == false){
-                character.cheatedset(true);
+            if(action[size-2]){
+                return !character.cheatedreturn();
             }else{
-
+                character.cheatedset(!character.cheatedreturn());
+                return !character.cheatedreturn();
             }
         }
     break;
