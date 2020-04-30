@@ -125,6 +125,3 @@ Character::game(const int id,Character& character,const bool *action,const int s
 
 }
 vector<Character> Character::character;
-int main(){
-    return 0;
-}

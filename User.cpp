@@ -1,4 +1,4 @@
-#include "header/User.h"
+#include "header/User.hpp"
 User::User(string n,string f,string p)
 {
   setname(n);
