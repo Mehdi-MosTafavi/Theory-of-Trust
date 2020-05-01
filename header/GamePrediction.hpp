@@ -1,8 +1,66 @@
 #ifndef GAMEPREDICTION_H
 #define GAMEPREDICTION_H
-class GamePrediction : public GameCompetition {
+// libs and namespaces
+/*
+#include <iostream>
+#include <vector>
+using namespace std ;
+*/
+//help Mehdi
+/*
+class Character{
 public:
-  vector<Character> chars ; ///// (jens)notSure
+  int id ;
+  string name ;
+  int point ;
+  friend class GameCompetition ;
+  static vector <Character> character ;
+  Character(int i , string n) {
+    id = i ;
+    name = n ;
+    point = 0 ;
+  }
+  Character(int i) {
+    id = i ;
+    name = Character::character[i].name ;
+    point = 0 ;
+  }
+};
+vector <Character> Character::character ;
+void Character_init(){
+  Character::character.push_back(Character(1,"Masoom")) ;
+  Character::character.push_back(Character(2,"Moqaled")) ;
+  Character::character.push_back(Character(3,"Moqaled mehraboon")) ;
+  Character::character.push_back(Character(4,"kinei")) ;
+  Character::character.push_back(Character(5,"Kargah")) ;
+  Character::character.push_back(Character(6,"Shansi")) ;
+  Character::character.push_back(Character(7,"Sade")) ;
+  Character::character.push_back(Character(8,"Moteqaleb")) ;
+}
+*/
+// help Hosein
+/*
+class GameCompetition{
+  friend class GamePrediction ;
+  static void bazi(Character& a , Character& b) {
+    a.point +=  yek adad ;
+    b.point +=  yek adad  ;
+  }
+};
+*/
+// My Main
+/*
+int main() {
+  Character_init();
+  GamePrediction gp = GamePrediction::startPreGame();
+  gp.preGame() ;
+  return 0 ;
+}
+*/
+
+class GamePrediction{
+public:
+  vector<Character> chars ;
   int lastCharCount[8] ;
   int charCount[8] ;
   int preRound ;
@@ -22,27 +80,9 @@ public:
       }
     }
   }
-  static void startPreGame() {
-    int pr , int de , int gue ;
+  static GamePrediction startPreGame() {
+    int pr , de , gue ;
     int chc[8] ;
-    /*
-    cout << "Masoom : " ;
-    cin >> chc[0] ;
-    cout << "Moqaled : " ;
-    cin >> chc[1] ;
-    cout << "Moqaled mehraboon : " ;
-    cin >> chc[2] ;
-    cout << "Kinei : " ;
-    cin >> chc[3] ;
-    cout << "Kargah : " ;
-    cin >> chc[4] ;
-    cout << "Shansi : " ;
-    cin >> chc[5] ;
-    cout << "Sade : " ;
-    cin >> chc[6] ;
-    cout << "Moteqaleb : " ;
-    cin >> chc[7] ;
-    */
     for (int i = 0 ; i < 8 ; i++) {
       cout << Character::character[i].name << " : " ; ///////////// niazmand Edit , Temp ////////////////
       cin >> chc[i] ;
@@ -53,24 +93,26 @@ public:
     cin >> de ;
     cout << "your guess Id : " ;
     cin >> gue ;
-    GamePrediction(pr , de , gue , chc) ;
+    GamePrediction gp = GamePrediction(pr , de , gue , chc) ;
+    return gp ;
   }
   void charHandle(int ted) {
     for (int i = 0 ; i<chars.size() ; i++) {
       for (int j = i+1 ; j<chars.size() ; j++) {
-        if (chars[i].point()>chars[j].point()) {
+        if (chars[i].point>chars[j].point) {
           Character c = chars[i] ; // (jens) notSure
           chars[i] = chars[j] ;
           chars[j] = c ;
         }
       }
     }
-    for (int i = chars.size() - ted ; i<chars.size() ; i++) {
+    int size = chars.size();
+    for (int i = size - ted ; i<size ; i++) {
       chars.push_back(Character(chars[i].id)) ;
-      charCount[chars[i].id] += 1 ;
+      charCount[chars[i].id -1] += 1 ;
     }
     for (int i = 0 ; i<ted ; i++) {
-      charCount[chars[i].id] -= 1 ;
+      charCount[chars[i].id -1] -= 1 ;
       chars.erase(chars.begin() + i) ;
     }
   }
@@ -78,20 +120,32 @@ public:
     for (int i = 0 ; i<cnt ; i++) {
       for (int j = 0 ; j<chars.size() ; j++) {
         for (int r = j+1 ;r<chars.size() ; r++) {
-          bazi(chars[j],chars[r]) ; //// temp , code dar kelas madar neveshte mishavad ///
+          GameCompetition::bazi(chars[j],chars[r]) ; //// temp , code dar kelas madar neveshte mishavad ///
         }
       }
       charHandle(del) ;
     }
   }
   // bayad design shavad , ebtedaei
-  void print() {
+  void print(int rn) {
+    if (rn == 0){
+      cout << "\033[36m" << "Vaziate ebtedaei" << "\033[0m" << endl;
+    } else {
+      cout << "\033[36m" << "Rande " << "\033[0m";
+      if (rn == preRound) {
+        cout << "\033[35m" << rn << "\033[0m" << endl;
+      } else {
+        cout << "\033[36m" << rn << "\033[0m" << endl;
+      }
+    }
     for (int i = 0 ; i<8 ; i++) {
       if (i==4) {
         cout << endl ;
       } else if (i==0) {
-      } else {
+      } else if (i==3) {
         cout << "\t" ;
+      } else {
+        cout << "\t\t" ;
       }
       if (charCount[i]==lastCharCount[i]) { // name not sure again
         	cout << "\033[33m" << Character::character[i].name << " : " << charCount[i] << "\033[0m";
@@ -101,6 +155,7 @@ public:
         	cout << "\033[31m" << Character::character[i].name << " : " << charCount[i] << "\033[0m";
       }
     }
+    cout << endl ;
     for (int i = 0 ; i<8 ; i++) {
       lastCharCount[i]=charCount[i];
     }
@@ -108,18 +163,18 @@ public:
   void preGame(){
     int command = 0 ; // 0 or Wrong-One Step //1-Until End
     int randeFeli = 0 ;
-    print() ;
+    print(0) ;
     while (randeFeli < preRound) {
       cout << "What is your command : " ;
       cin >> command ;
       if (command == 1) {
         move(preRound - randeFeli) ;
         randeFeli = preRound  ;
-        print();
+        print(preRound);
       } else {
         move(1) ;
         randeFeli++ ;
-        print();
+        print(randeFeli);
       }
     }
     int max = -1 ;
@@ -130,12 +185,14 @@ public:
         maxi = i ;
       }
     }
-    cout "Winner : " << Character::character[maxi].name << endl ;
-    cout << "Your Guess : " << Character::character[guess].name << " ";
+    cout << "\033[36m" << "The game has been finished !" << "\033[0m" << endl;
+    cout << "Winner : " ;
+    cout << "\033[32m" << Character::character[maxi].name << "\033[0m" << endl;
+    cout << "Your Guess : " ;
     if (guess == maxi) {
-      cout << "Correct" << endl ;
+      cout << "\033[32m" << Character::character[guess].name << "\033[0m" << endl;
     } else {
-      cout << "Wrong" << endl ;
+      cout << "\033[31m" << Character::character[guess].name << "\033[0m" << endl;
     }
   }
 };
