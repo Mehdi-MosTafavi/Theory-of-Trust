@@ -41,15 +41,15 @@ Character::game(const int id,Character& character,const bool *action,const int s
     switch (id)
     {
         //Masoom
-    case 1:
+    case 0:
         return true;
         break;
         //Moqaled
-    case 2: 
+    case 1:
         return action[size-2];
     break;
         //Moqaled mehraboon
-    case 3:
+    case 2:
         if(!action[size-2] && !action[size-3]){
             return false;
         }else{
@@ -57,7 +57,7 @@ Character::game(const int id,Character& character,const bool *action,const int s
         }
     break;
     //Kinei
-    case 4:
+    case 3:
     if(character.cheatedreturn() == false){
         if(action[size-2] == false){
             character.cheatedset();
@@ -70,14 +70,14 @@ Character::game(const int id,Character& character,const bool *action,const int s
     }
     break;
     //Kargah
-    case 5:
+    case 4:
         switch(size){
             case 1: case 3: case 4:
                 return true;
             break;
             case 2:
                 return false;
-            break; 
+            break;
             default:
             if(character.cheatedreturn() == true){
                 return false;
@@ -93,7 +93,7 @@ Character::game(const int id,Character& character,const bool *action,const int s
         }
     break;
     //Shansi
-    case 6:
+    case 5:
         srand(time(NULL));
         if(rand()%2 == 0){
             return true;
@@ -102,7 +102,7 @@ Character::game(const int id,Character& character,const bool *action,const int s
         }
     break;
     //Sade
-    case 7:
+    case 6:
         if(size == 1){
             return true;
         }else{
@@ -115,7 +115,7 @@ Character::game(const int id,Character& character,const bool *action,const int s
         }
     break;
     //Moteqaleb
-    case 8:
+    case 7:
         return false;
     break;
     default:

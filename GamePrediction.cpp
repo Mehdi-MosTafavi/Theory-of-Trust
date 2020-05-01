@@ -43,10 +43,10 @@ void GamePrediction::charHandle(int ted) {
   int size = chars.size();
   for (int i = size - ted ; i<size ; i++) {
     chars.push_back(Character(chars[i].id)) ;
-    charCount[chars[i].id -1] += 1 ;
+    charCount[chars[i].id] += 1 ;
   }
   for (int i = 0 ; i<ted ; i++) {
-    charCount[chars[i].id -1] -= 1 ;
+    charCount[chars[i].id] -= 1 ;
     chars.erase(chars.begin() + i) ;
   }
 }

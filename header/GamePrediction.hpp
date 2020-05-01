@@ -32,6 +32,8 @@ using namespace std ;
 //////////////////////// ba tavajoh be line 38 va 39 file GamePrediction.cpp
 //////////////////////// va niaz be anjame swap int va sting nemitavanand const tarif shavand
 //////////////////////// leza barkhi taghirat dar file CharacterData Eemal shod , Barresi Shavad
+//////////////////////// Hamchenin id ha be jaye 1 ta 8 be dalile ijad eshkal dar code predict be
+//////////////////////// 0 ta 7 taghir yaft va tamame taghirate lazem niz Eemal shod
 /*
 class Character{
 public:
@@ -53,14 +55,14 @@ public:
 };
 vector <Character> Character::character ;
 void Character_init(){
-  Character::character.push_back(Character(1,"Masoom")) ;
-  Character::character.push_back(Character(2,"Moqaled")) ;
-  Character::character.push_back(Character(3,"Moqaled mehraboon")) ;
-  Character::character.push_back(Character(4,"kinei")) ;
-  Character::character.push_back(Character(5,"Kargah")) ;
-  Character::character.push_back(Character(6,"Shansi")) ;
-  Character::character.push_back(Character(7,"Sade")) ;
-  Character::character.push_back(Character(8,"Moteqaleb")) ;
+  Character::character.push_back(Character(0,"Masoom")) ;
+  Character::character.push_back(Character(1,"Moqaled")) ;
+  Character::character.push_back(Character(2,"Moqaled mehraboon")) ;
+  Character::character.push_back(Character(3,"kinei")) ;
+  Character::character.push_back(Character(4,"Kargah")) ;
+  Character::character.push_back(Character(5,"Shansi")) ;
+  Character::character.push_back(Character(6,"Sade")) ;
+  Character::character.push_back(Character(7,"Moteqaleb")) ;
 }
 */
 
