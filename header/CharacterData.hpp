@@ -1,17 +1,21 @@
 #ifndef CHARACTERDATA_HPP
 #define CHARACTERDATA_HPP
 class CharacterData{
-    const int id;
-    const string name;
+    int id;
+    string name;
     int point;
     bool cheated;
     public:
-    CharacterData(const int i,const string& n): id(i),name(n){
+    CharacterData(int i,string& n) {
+        id = i ;
+        name = n ;
         cheated = false;
         point = 0;
     }
     //Play without user
-    CharacterData(const int i): id(i){
+    CharacterData(int i) {
+        id = i ;
+        name = Character::character[i].name ;
         point = 0;
     }
     int idreturn() const {
