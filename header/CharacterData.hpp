@@ -6,7 +6,7 @@ class CharacterData{
     int point;
     bool cheated;
     public:
-    CharacterData(int i,string& n) {
+    CharacterData(const int i,const string& n) {
         id = i ;
         name = n ;
         cheated = false;
@@ -15,7 +15,7 @@ class CharacterData{
     //Play without user
     CharacterData(int i) {
         id = i ;
-        name = Character::character[i].name ;
+        name = Character::character[i].namereturn() ;
         point = 0;
     }
     int idreturn() const {
