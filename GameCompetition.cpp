@@ -71,5 +71,5 @@ this->print();
 }
 void GameCompetition::print()
 {
-  cout<<bot.pointreturn()<<"     "<<tester.getpoint()<<endl;
+  cout << "\033[36m" <<"Your point = "<<tester.getpoint()<<" Bot point = "<<bot.pointreturn()<< "\033[36m" <<endl;
 }
