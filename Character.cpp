@@ -41,7 +41,7 @@ Character::pointset(const int p){
     ptr -> pointset(p);
 }
 bool
-Character::game(const int id,Character& character,const bool *action,const int size){
+Character::game(const int id,Character& character,const vector<bool>& action){
     switch (id)
     {
         //Masoom
@@ -50,11 +50,14 @@ Character::game(const int id,Character& character,const bool *action,const int s
         break;
         //Moqaled
     case 1:
-        return action[size-2];
+    if(action.size() == 1){
+        return true;
+    }
+        return action[action.size()-2];
     break;
         //Moqaled mehraboon
     case 2:
-        if(!action[size-2] && !action[size-3]){
+        if(!action[action.size()-2] && !action[action.size()-3]){
             return false;
         }else{
             return true;
@@ -63,7 +66,7 @@ Character::game(const int id,Character& character,const bool *action,const int s
     //Kinei
     case 3:
     if(character.cheatedreturn() == false){
-        if(action[size-2] == false){
+        if(action[action.size()-2] == false){
             character.cheatedset();
             return false;
         }else{
@@ -75,7 +78,7 @@ Character::game(const int id,Character& character,const bool *action,const int s
     break;
     //Kargah
     case 4:
-        switch(size){
+        switch(action.size()){
             case 1: case 3: case 4:
                 return true;
             break;
@@ -90,7 +93,7 @@ Character::game(const int id,Character& character,const bool *action,const int s
                     character.cheatedset();
                     return false;
                 }else{
-                    return action[size-2];
+                    return action[action.size()-2];
                 }
             }
             break;
@@ -107,10 +110,10 @@ Character::game(const int id,Character& character,const bool *action,const int s
     break;
     //Sade
     case 6:
-        if(size == 1){
+        if(action.size() == 1){
             return true;
         }else{
-            if(action[size-2]){
+            if(action[action.size()-2]){
                 return !character.cheatedreturn();
             }else{
                 character.cheatedset(!character.cheatedreturn());

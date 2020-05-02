@@ -14,7 +14,7 @@ public:
     void cheatedset(const bool);
     void pointset(const int);
     bool cheatedreturn();
-    static bool game(const int,Character&,const bool *,const int);
+    static bool game(const int,Character&,const vector<bool>&);
     ~Character();
 };
 #endif
