@@ -12,7 +12,10 @@ public:
   string getfamily();
   string getphone();
   int getpoint();
+  User()
+  {
 
+  }
 
 private:
   string name;

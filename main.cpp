@@ -5,6 +5,7 @@
 using namespace std;
 #include "User.cpp"
 #include "Character.cpp"
+#include "GameCompetition.cpp"
 std::vector<User> tester;
 
 bool isNumber(string s)//check inputed string is number or else
@@ -36,6 +37,40 @@ void signup()
   else
     cout<<"Register failed"<<endl;
 }
+void GameCompetition_funcinit(){
+  string phone;
+  cin>>phone;
+  bool game=true;
+  User tester_online;
+  if(isNumber(phone))
+  {
+    for(int i=0;i<tester.size();i++)
+    {
+      if(tester[i].getphone()==phone)
+        tester_online=tester[i];
+    }
+  }
+  else
+    game=false;
+  int j=rand()%8;
+  if(game)
+  for(int i=0;i<Character::character.size();i++)
+  {
+    if(Character::character[i].idreturn()==j)
+    {
+      GameCompetition game_face=GameCompetition(tester_online,Character::character[i],j);
+      game_face.game();
+      break;
+    }
+  }
+  else
+    cout<<"not found";
+  return;
+}
+
+void GameCompetition_func(){
+
+}
 int main()
 {
   //Initializing Characters
@@ -49,5 +84,11 @@ int main()
   Character::character.emplace_back(7,"Moteqaleb");
 
   signup();
+  GameCompetition_funcinit();
+
+
+
+
+
   return 0;
 }
