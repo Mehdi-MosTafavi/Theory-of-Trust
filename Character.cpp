@@ -11,7 +11,9 @@ Character::Character(const int id,const string& name)){
     ptr = new CharacterData(id,name);
 }
 //Playing without user
-Character::Character(const int id): ptr(new CharacterData(id)){}
+Character::Character(const int id){
+    prt = new CharacterData(id);
+}
 Character::~Character(){}
 
 int
