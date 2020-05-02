@@ -6,6 +6,7 @@ using namespace std;
 #include "User.cpp"
 #include "Character.cpp"
 #include "GameCompetition.cpp"
+//#include "GamePrediction.cpp"
 std::vector<User> tester;
 
 bool isNumber(string s)//check inputed string is number or else
@@ -104,9 +105,14 @@ int main()
     case 0: printmenu(); cin>>menu; break;
     case 1: cout<<"Register: "<<endl; signup(); break;
     case 2: cout<<"Play with a character: "<<endl; GameCompetition_funcinit(); break;
-    case 3: cout<<"Play with simulator: "<<endl; break;
+    case 3: {
+      cout<<"Playing with a simulator" <<endl;
+      //GamePrediction gp = GamePrediction::startPreGame();
+      //gp.preGame() ;
+      break;
+    }
     case 4: cout<<"Highscores: "<<endl; break;
-    case 5: cout<<"Settings: "<<endl; int menu2; cin>>menu2; 
+    case 5: cout<<"Settings: "<<endl; int menu2; cin>>menu2;
       cout<<"0. First menu"<<endl<<"1. Delete scores"<<endl;
       switch(menu2){
         case 0: menu = 0; break;

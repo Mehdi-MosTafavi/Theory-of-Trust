@@ -33,7 +33,7 @@ GamePrediction GamePrediction::startPreGame() {
 void GamePrediction::charHandle(int ted) {
   for (int i = 0 ; i<chars.size() ; i++) {
     for (int j = i+1 ; j<chars.size() ; j++) {
-      if (chars[i].point>chars[j].point) {
+      if (chars[i].pointreturn()>chars[j].pointreturn()) {
         Character c = chars[i] ; // (jens) notSure
         chars[i] = chars[j] ;
         chars[j] = c ;
