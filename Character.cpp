@@ -7,12 +7,12 @@ using namespace std;
 #include "header/CharacterData.hpp"
 
 //Constructor for playing with user
-Character::Character(const int id,const string& name)){
+Character::Character(const int id,const string & name){
     ptr = new CharacterData(id,name);
 }
 //Playing without user
 Character::Character(const int id){
-    prt = new CharacterData(id);
+    ptr = new CharacterData(id);
 }
 Character::~Character(){}
 
