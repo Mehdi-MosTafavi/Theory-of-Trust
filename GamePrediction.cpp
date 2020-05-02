@@ -18,7 +18,7 @@ GamePrediction GamePrediction::startPreGame() {
   int pr , de , gue ;
   int chc[8] ;
   for (int i = 0 ; i < 8 ; i++) {
-    cout << Character::character[i].name << " : " ; ///////////// niazmand Edit , Temp ////////////////
+    cout << Character::character[i].namereturn() << " : " ; ///////////// niazmand Edit , Temp ////////////////
     cin >> chc[i] ;
   }
   cout << "RoundCount : " ;
@@ -42,11 +42,11 @@ void GamePrediction::charHandle(int ted) {
   }
   int size = chars.size();
   for (int i = size - ted ; i<size ; i++) {
-    chars.push_back(Character(chars[i].id)) ;
-    charCount[chars[i].id] += 1 ;
+    chars.push_back(Character(chars[i].idreturn())) ;
+    charCount[chars[i].idreturn()] += 1 ;
   }
   for (int i = 0 ; i<ted ; i++) {
-    charCount[chars[i].id] -= 1 ;
+    charCount[chars[i].idreturn()] -= 1 ;
     chars.erase(chars.begin() + i) ;
   }
 }
@@ -80,12 +80,12 @@ void GamePrediction::print(int rn) {
     } else {
       cout << "\t\t" ;
     }
-    if (charCount[i]==lastCharCount[i]) { // name not sure again
-        cout << "\033[33m" << Character::character[i].name << " : " << charCount[i] << "\033[0m";
+    if (charCount[i]==lastCharCount[i]) {
+        cout << "\033[33m" << Character::character[i].namereturn() << " : " << charCount[i] << "\033[0m";
     } else if (charCount[i]>lastCharCount[i]) {
-        cout << "\033[32m" << Character::character[i].name << " : " << charCount[i] << "\033[0m";
+        cout << "\033[32m" << Character::character[i].namereturn() << " : " << charCount[i] << "\033[0m";
     } else if (charCount[i]<lastCharCount[i]) {
-        cout << "\033[31m" << Character::character[i].name << " : " << charCount[i] << "\033[0m";
+        cout << "\033[31m" << Character::character[i].namereturn() << " : " << charCount[i] << "\033[0m";
     }
   }
   cout << endl ;
@@ -120,11 +120,11 @@ void GamePrediction::preGame(){
   }
   cout << "\033[36m" << "The game has been finished !" << "\033[0m" << endl;
   cout << "Winner : " ;
-  cout << "\033[32m" << Character::character[maxi].name << "\033[0m" << endl;
+  cout << "\033[32m" << Character::character[maxi].namereturn() << "\033[0m" << endl;
   cout << "Your Guess : " ;
   if (guess == maxi) {
-    cout << "\033[32m" << Character::character[guess].name << "\033[0m" << endl;
+    cout << "\033[32m" << Character::character[guess].namereturn() << "\033[0m" << endl;
   } else {
-    cout << "\033[31m" << Character::character[guess].name << "\033[0m" << endl;
+    cout << "\033[31m" << Character::character[guess].namereturn() << "\033[0m" << endl;
   }
 }
