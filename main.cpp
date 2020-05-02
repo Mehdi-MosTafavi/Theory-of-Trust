@@ -28,7 +28,12 @@ bool isstring(string s)//check inputed string is number or else
 void signup()
 {
   string name,family,phone;
-  cin>>name>>family>>phone;
+  cout<<"Your name: ";
+  cin>>name;
+  cout<<"Your family: ";
+  cin>>family;
+  cout<<"Your Phone: ";
+  cin>>phone;
   if(isstring(name) && isstring(family) && isNumber(phone))
   {
     tester.push_back(User(name,family,phone));
@@ -39,6 +44,7 @@ void signup()
 }
 void GameCompetition_funcinit(){
   string phone;
+  cout<<"Your Phone : ";
   cin>>phone;
   bool game=true;
   User tester_online;
@@ -82,8 +88,9 @@ int main()
   Character::character.emplace_back(5,"Shansi");
   Character::character.emplace_back(6,"Sade");
   Character::character.emplace_back(7,"Moteqaleb");
-
+  cout<<"operation 1:"<<endl;
   signup();
+  cout<<"operation 2:"<<endl;
   GameCompetition_funcinit();
 
 
