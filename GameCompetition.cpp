@@ -46,8 +46,7 @@ void GameCompetition::game()
     bool tester_action,bot_action;
     tester_action=this->action();
     action_history.push_back(tester_action);
-    // bot_action=bot.game(bot_id,bot,action_history);
-    bot_action=true;
+    bot_action=bot.game(bot_id,bot,action_history);
     if(tester_action && bot_action)
     {
       tester_point+=2;
@@ -71,5 +70,6 @@ this->print();
 }
 void GameCompetition::print()
 {
-  cout << "\033[36m" <<"Your point = "<<tester.getpoint()<<" Bot point = "<<bot.pointreturn()<< "\033[36m" <<endl;
+  cout<<"\033[31m"<<"You played with "<<bot.namereturn()<<"'s character"<<"\033[0m"<<endl;
+  cout << "\033[36m" <<"Your point = "<<tester.getpoint()<<" Bot point = "<<bot.pointreturn()<< "\033[0m" <<endl;
 }

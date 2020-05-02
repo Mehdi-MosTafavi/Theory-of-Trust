@@ -48,17 +48,23 @@ void GameCompetition_funcinit(){
   cout<<"Your Phone: ";
   cin>>phone;
   bool game=true;
+  bool exist=false;
   User tester_online;
   if(isNumber(phone))
   {
     for(int i=0;i<tester.size();i++)
     {
       if(tester[i].getphone()==phone)
+      {
         tester_online=tester[i];
+        exist=true;
+      }
     }
   }
   else
     game=false;
+    if(!exist)
+      game=false;
   int j=rand()%8;
   if(game)
   for(int i=0;i<Character::character.size();i++)
@@ -71,7 +77,7 @@ void GameCompetition_funcinit(){
     }
   }
   else
-    cout<<"not found";
+    cout<<"Some problem is exist"<<endl;
   return;
 }
 void printmenu(){
@@ -89,6 +95,7 @@ void GameCompetition_func(){
 }
 int main()
 {
+  srand(time(0));
   //Initializing Characters
   Character::character.emplace_back(0,"Masoom");
   Character::character.emplace_back(1,"Moqaled");
@@ -102,7 +109,7 @@ int main()
   int menu = 0;
   while(cin>>menu){
   switch(menu){
-    case 0: printmenu(); cin>>menu; break;
+    case 0: printmenu(); break;
     case 1: cout<<"Register: "<<endl; signup(); break;
     case 2: cout<<"Play with a character: "<<endl; GameCompetition_funcinit(); break;
     case 3: {
