@@ -19,9 +19,10 @@ public:
   static void bazi(Character &, Character &);
   static int round_prediction;
   void file_write(int );
+  static void GameCompetition_funcinit();
 private:
   int round;
-  User tester;
+  User utest;
   Character bot;
   int bot_id;
 

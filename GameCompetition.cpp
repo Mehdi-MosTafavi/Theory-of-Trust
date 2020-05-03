@@ -4,7 +4,7 @@ GameCompetition::GameCompetition()
 {
   setround(8);
 }
-GameCompetition::GameCompetition(User u,Character c ,int i):tester(u),bot(c)
+GameCompetition::GameCompetition(User u,Character c ,int i):utest(u),bot(c)
 {
   // settester(u);
   // setbot(c);
@@ -64,7 +64,7 @@ void GameCompetition::game()
 
   }
 bot.pointset(bot_point);
-tester.setpoint(tester_point);
+utest.setpoint(tester_point);
 this->file_write(tester_point);
 this->print();
 }
@@ -114,7 +114,7 @@ void GameCompetition::bazi(Character &a,Character &b)
 void GameCompetition::print()
 {
   cout<<"You played with "<<bot.namereturn()<<"'s character"<<endl;
-  cout <<"Your point = "<<tester.getpoint()<<" Bot point = "<<bot.pointreturn()<<endl;
+  cout <<"Your point = "<<utest.getpoint()<<" Bot point = "<<bot.pointreturn()<<endl;
 }
 int GameCompetition::round_prediction=8;
 void GameCompetition::file_write(int a)
@@ -122,4 +122,43 @@ void GameCompetition::file_write(int a)
   ofstream f1("file/Highscore.dat",ios::out | ios::app);
   f1<<a<<endl;
   f1.close();
+}
+
+void GameCompetition::GameCompetition_funcinit()
+{
+  string phone;
+  cout<<"Your Phone: ";
+  cin>>phone;
+  bool game=true;
+  bool exist=false;
+  User tester_online;
+  if(isNumber(phone))
+  {
+    for(int i=0;i<tester.size();i++)
+    {
+      if(tester[i].getphone()==phone)
+      {
+        tester_online=tester[i];
+        exist=true;
+      }
+    }
+  }
+  else
+    game=false;
+    if(!exist)
+      game=false;
+  int j=rand()%8;
+  if(game)
+  for(int i=0;i<Character::character.size();i++)
+  {
+    if(Character::character[i].idreturn()==j)
+    {
+      GameCompetition game_face=GameCompetition(tester_online,Character::character[i],j);
+      game_face.game();
+      break;
+    }
+  }
+  else
+    cout<<"Some problem is exist"<<endl;
+  return;
 }

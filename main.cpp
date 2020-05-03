@@ -9,43 +9,6 @@ using namespace std;
 #include "GameCompetition.cpp"
 #include "GamePrediction.cpp"
 
-void GameCompetition_funcinit(){
-  string phone;
-  cout<<"Your Phone: ";
-  cin>>phone;
-  bool game=true;
-  bool exist=false;
-  User tester_online;
-  if(isNumber(phone))
-  {
-    for(int i=0;i<tester.size();i++)
-    {
-      if(tester[i].getphone()==phone)
-      {
-        tester_online=tester[i];
-        exist=true;
-      }
-    }
-  }
-  else
-    game=false;
-    if(!exist)
-      game=false;
-  int j=rand()%8;
-  if(game)
-  for(int i=0;i<Character::character.size();i++)
-  {
-    if(Character::character[i].idreturn()==j)
-    {
-      GameCompetition game_face=GameCompetition(tester_online,Character::character[i],j);
-      game_face.game();
-      break;
-    }
-  }
-  else
-    cout<<"Some problem is exist"<<endl;
-  return;
-}
 void printmenu(){
   cout<<"Enter menu:"<<endl
   <<"0. First menu"<<endl
@@ -98,7 +61,7 @@ int main()
   switch(menu){
     case 0: printmenu(); break;
     case 1: cout<<"Register: "<<endl; User::signup(); break;
-    case 2: cout<<"Play with a character: "<<endl; GameCompetition_funcinit(); break;
+    case 2: cout<<"Play with a character: "<<endl; GameCompetition::GameCompetition_funcinit(); break;
     case 3: {
       cout<<"Playing with a simulator" <<endl;
       GamePrediction gp = GamePrediction::startPreGame();
