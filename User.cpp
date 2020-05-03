@@ -93,7 +93,16 @@ void User::signup()
   cin>>family;
   cout<<"Your Phone: ";
   cin>>phone;
-  if(isstring(name) && isstring(family) && isNumber(phone))
+  bool exist=false;
+  for(int i=0;i<tester.size();i++)
+  {
+    if(tester[i].getphone()==phone)
+    {
+      exist=true;
+    }
+  }
+
+  if(isstring(name) && isstring(family) && isNumber(phone) && !exist)
   {
     tester.push_back(User(name,family,phone));
     file_write(tester[tester.size()-1]);

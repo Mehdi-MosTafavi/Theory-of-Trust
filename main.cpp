@@ -41,6 +41,35 @@ void Highscore()
     cout<<"Not exists"<<endl;
   return;
 }
+void file_clear()
+{
+  ofstream f1("file/Highscore.dat",ios::trunc);
+  f1.close();
+}
+void change_point()
+{  int temp;
+
+  cout<<"point of win: ";
+  cin>>temp;
+  GameCompetition::setwin(temp);
+  cout<<"point of draw: ";
+  cin>>temp;
+  GameCompetition::setdraw(temp);
+  cout<<"point of game over: ";
+  cin>>temp;
+  GameCompetition::setover(temp);
+  cout<<"Points is Changed"<<endl;
+  return;
+}
+void change_round()
+{
+  int temp;
+  cout<<"round of GamePrediction: ";
+  cin>>temp;
+  temp=(temp>50)?50:temp;
+  GameCompetition::setroundprediction(temp);
+  cout<<"round is Changed"<<endl;
+}
 int main()
 {
   srand(time(0));
@@ -69,15 +98,21 @@ int main()
       break;
     }
     case 4:Highscore(); break;
-    case 5: cout<<"Settings: "<<endl; int menu2; cin>>menu2;
-      cout<<"0. First menu"<<endl<<"1. Delete scores"<<endl;
+    case 5: cout<<"Settings: "<<endl; int menu2;
+      cout<<"0. First menu"<<endl<<"1. Delete scores"<<endl<<"2.Change point"<<endl<<"3.Change round of Prediction"<<endl;
+      cin>>menu2;
       switch(menu2){
-        case 0: menu = 0; break;
-        case 1:  break;
+        case 0: menu = 0; printmenu(); break;
+        case 1: file_clear(); break;
+        case 2: change_point();break;
+        case 3: change_round();break;
+        default:
+          cout<<"ERROR!"<<endl;break;
       }
     break;
     default: cout<<"ERROR!"<<endl; break;
   }
+
   }
 
   return 0;
