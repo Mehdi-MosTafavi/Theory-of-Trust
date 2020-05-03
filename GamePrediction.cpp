@@ -54,7 +54,7 @@ void GamePrediction::move(int cnt) {
   for (int i = 0 ; i<cnt ; i++) {
     for (int j = 0 ; j<chars.size() ; j++) {
       for (int r = j+1 ;r<chars.size() ; r++) {
-        GameCompetition::bazi(chars[j],chars[r]) ; //// temp , code dar kelas madar neveshte mishavad ///
+      GameCompetition::bazi(chars[j],chars[r]);
       }
     }
     charHandle(del) ;

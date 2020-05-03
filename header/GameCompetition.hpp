@@ -16,7 +16,7 @@ public:
   void setbot(Character c);
   Character getbot();
   bool action();
-  void bazi(Character &, Character &);
+  static void bazi(Character &, Character &);
 
 private:
   int round;

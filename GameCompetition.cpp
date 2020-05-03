@@ -38,9 +38,11 @@ bool GameCompetition::action()
 void GameCompetition::game()
 {
   int tester_point=0,bot_point=0;
+  action_history.push_back(true);
   for(int i=0;i<round;i++)
   {
     bool tester_action,bot_action;
+
     tester_action=this->action();
     action_history.push_back(tester_action);
     bot_action=bot.game(bot_id,bot,action_history);
@@ -68,16 +70,21 @@ this->print();
 
 void GameCompetition::bazi(Character &a,Character &b)
 {
+  int dowr = (rand()%4)+5 ;
   std::vector<bool> a_history;
   std::vector<bool> b_history;
+  a_history.push_back(true);
+  a_history.push_back(true);
+  b_history.push_back(true);
+  b_history.push_back(true);
   int a_point=0,b_point=0;
-  for(int i=0;i<round;i++)
+  for(int i=0;i<dowr;i++)
   {
 
   bool a_action,b_action;
   a_action=a.game(a.idreturn(),a,b_history);
-  b_action=b.game(b.idreturn(),b,a_history);
   a_history.push_back(a_action);
+  b_action=b.game(b.idreturn(),b,a_history);
   b_history.push_back(b_action);
 
   if(a_action && b_action)
