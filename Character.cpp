@@ -101,7 +101,6 @@ Character::game(const int id,Character& character,const vector<bool>& action){
     break;
     //Shansi
     case 5:
-        srand(time(NULL));
         if(rand()%2 == 0){
             return true;
         }else{

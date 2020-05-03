@@ -48,7 +48,7 @@ void GameCompetition::setdraw(int d)
 bool GameCompetition::action()
 {
   int a;
-  cout<<"action? ";
+  cout<<"your action : ";
   cin>>a;
   if(a==0)
     return false;
@@ -63,10 +63,15 @@ void GameCompetition::game()
   for(int i=0;i<round_prediction;i++)
   {
     bool tester_action,bot_action;
-
+    cout << "Round " << i+1 << endl ;
     tester_action=this->action();
     action_history.push_back(tester_action);
     bot_action=bot.game(bot_id,bot,action_history);
+    if (bot_action) {
+      cout << "bot action : 1" << endl ;
+    } else {
+      cout << "bot action : 0" << endl ;
+    }
     if(tester_action && bot_action)
     {
       tester_point+=point_draw;
