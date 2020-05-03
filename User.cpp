@@ -62,6 +62,20 @@ void User::Highscore()
   cout<<"HighScore is " << max<<endl;
   else
     cout<<"Not exists"<<endl;
+    if(ok)
+    {
+    cout<<"Enter Your PhoneNumber: ";
+    string phone;
+    cin>>phone;
+    for(int i=0;i<tester.size();i++)
+    {
+      if((tester[i].getphone())==phone)
+      {
+        cout<<"Your point :"<<tester[i].getpoint()<<endl;
+        break;
+      }
+    }
+}
   return;
 }
 bool isNumber(string s)//check inputed string is number or else
@@ -135,4 +149,8 @@ void User::signup()
   }
   else
     cout<<"Registration failed !!"<<endl;
+}
+void User::operator+(int a)
+{
+  this->point+=a;
 }

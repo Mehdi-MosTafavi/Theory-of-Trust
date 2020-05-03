@@ -16,7 +16,7 @@ public:
   static void file_clear();
   static void Highscore();
   static void signup() ;
-
+  void operator+(int);
 private:
   string name;
   string family;
