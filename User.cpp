@@ -97,26 +97,25 @@ bool isstring(string s)//check inputed string is number or else
 
 void file_write(User a)
 {
-  ofstream f1("file/user.dat",ios::binary | ios::app);
+  ofstream f1("file/user.dat",ios::app);
   if(!f1)
     exit(0);
-  f1.write(reinterpret_cast<const char*>(&a),sizeof(User));
+f1<<a.getname()<<' '<<a.getfamily()<<' '<<a.getphone()<<endl;
   f1.close();
 }
 void file_init()
 {
-  ifstream f1("file/user.dat",ios::binary | ios::in);
+  ifstream f1("file/user.dat",ios::in);
   if(!f1)
   {
     exit(0);
   }
-    User a;
-    while(f1 && !f1.eof())
-    {
+    string name,family,phone;
+    while(f1>>name>>family>>phone)
+{
 
-      f1.read(reinterpret_cast<char*>(&a),sizeof(User));
-  // tester.push_back(User(a.getname(),a.getfamily(),a.getphone()));
-  tester.push_back(a);
+  tester.push_back(User(name,family,phone));
+  // tester.push_back(a);
 }
   f1.close();
   return;

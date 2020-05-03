@@ -11,6 +11,7 @@ using namespace std;
 #include "menu.cpp"
 int main()
 {
+  file_init();
   srand(time(0));
   printmenu();
   Character::CharacterInit();
