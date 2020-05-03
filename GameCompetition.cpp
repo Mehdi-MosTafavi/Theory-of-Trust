@@ -1,6 +1,6 @@
 
 #include "header/GameCompetition.hpp"
-int GameCompetition::round_prediction=8;
+int GameCompetition::round_prediction=rand()%4+5;
 
 GameCompetition::GameCompetition()
 {
@@ -60,7 +60,7 @@ void GameCompetition::game()
 {
   int tester_point=0,bot_point=0;
   action_history.push_back(true);
-  for(int i=0;i<round;i++)
+  for(int i=0;i<round_prediction;i++)
   {
     bool tester_action,bot_action;
 
@@ -192,18 +192,23 @@ void GameCompetition::change_point()
   cout<<"point of draw: ";
   cin>>temp;
   GameCompetition::setdraw(temp);
-  cout<<"point of game over: ";
+  cout<<"point of lose: ";
   cin>>temp;
   GameCompetition::setover(temp);
-  cout<<"Points is Changed"<<endl;
+  cout<<"Point is Changed"<<endl;
   return;
 }
 void GameCompetition::change_round()
 {
   int temp;
-  cout<<"round of GamePrediction: ";
+  cout<<"round of Game: ";
   cin>>temp;
-  temp=(temp>50)?50:temp;
+  if (temp == -1) {
+    temp = (rand()%4) + 5;
+  } else if (temp < 50) {
+  } else {
+    temp = 50 ;
+  }
   GameCompetition::setroundprediction(temp);
   cout<<"round is Changed"<<endl;
 }

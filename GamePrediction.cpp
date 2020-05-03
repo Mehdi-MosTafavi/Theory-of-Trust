@@ -62,9 +62,9 @@ void GamePrediction::move(int cnt) {
 }
 void GamePrediction::print(int rn) {
   if (rn == 0){
-    cout << "Vaziate ebtedaei" << endl;
+    cout << "Initial Arrangement" << endl;
   } else {
-    cout <<  "Rande " ;
+    cout <<  "ًRound " ;
     if (rn == preRound) {
       cout << rn << endl;
     } else {
