@@ -44,11 +44,10 @@ void file_init()
     User a;
     while(f1 && !f1.eof())
     {
-cout<<"ok"<<endl;
 
-  f1.read(reinterpret_cast<char*>(&a),sizeof(User));
+      f1.read(reinterpret_cast<char*>(&a),sizeof(User));
   // tester.push_back(User(a.getname(),a.getfamily(),a.getphone()));
-  // tester.push_back(a);
+  tester.push_back(a);
 }
   f1.close();
   return;
@@ -122,6 +121,25 @@ void printmenu(){
 void GameCompetition_func(){
 
 }
+void Highscore()
+{
+  ifstream f1("file/Highscore.dat");
+  int a,max=0;
+  bool ok=false;
+  if(!f1)
+    exit(0);
+  while(f1>>a)
+  {
+    ok=true;
+    if(a>max)
+      max=a;
+  }
+  if(ok)
+  cout<<"HighScore is : " << max<<endl;
+  else
+    cout<<"Not exists"<<endl;
+  return;
+}
 int main()
 {
   srand(time(0));
@@ -149,7 +167,7 @@ int main()
       gp.preGame() ;
       break;
     }
-    case 4: cout<<"Highscores: "<<endl; break;
+    case 4:Highscore(); break;
     case 5: cout<<"Settings: "<<endl; int menu2; cin>>menu2;
       cout<<"0. First menu"<<endl<<"1. Delete scores"<<endl;
       switch(menu2){

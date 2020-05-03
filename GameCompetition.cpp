@@ -2,7 +2,7 @@
 #include "header/GameCompetition.hpp"
 GameCompetition::GameCompetition()
 {
-  setround(10);
+  setround(8);
 }
 GameCompetition::GameCompetition(User u,Character c ,int i):tester(u),bot(c)
 {
@@ -65,12 +65,12 @@ void GameCompetition::game()
   }
 bot.pointset(bot_point);
 tester.setpoint(tester_point);
+this->file_write(tester_point);
 this->print();
 }
 
 void GameCompetition::bazi(Character &a,Character &b)
 {
-  int dowr = (rand()%4)+5 ;
   std::vector<bool> a_history;
   std::vector<bool> b_history;
   a_history.push_back(true);
@@ -78,7 +78,7 @@ void GameCompetition::bazi(Character &a,Character &b)
   b_history.push_back(true);
   b_history.push_back(true);
   int a_point=0,b_point=0;
-  for(int i=0;i<dowr;i++)
+  for(int i=0;i<round_prediction;i++)
   {
 
   bool a_action,b_action;
@@ -115,4 +115,11 @@ void GameCompetition::print()
 {
   cout<<"You played with "<<bot.namereturn()<<"'s character"<<endl;
   cout <<"Your point = "<<tester.getpoint()<<" Bot point = "<<bot.pointreturn()<<endl;
+}
+int GameCompetition::round_prediction=8;
+void GameCompetition::file_write(int a)
+{
+  ofstream f1("file/Highscore.dat",ios::out | ios::app);
+  f1<<a<<endl;
+  f1.close();
 }

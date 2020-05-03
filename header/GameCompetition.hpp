@@ -17,7 +17,8 @@ public:
   Character getbot();
   bool action();
   static void bazi(Character &, Character &);
-
+  static int round_prediction;
+  void file_write(int );
 private:
   int round;
   User tester;
