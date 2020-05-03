@@ -19,57 +19,7 @@ void printmenu(){
   <<"5. Settings"<<endl
   <<"Enter menu code: ";
 }
-void GameCompetition_func(){
 
-}
-void Highscore()
-{
-  ifstream f1("file/Highscore.dat");
-  int a,max=0;
-  bool ok=false;
-  if(!f1)
-    exit(0);
-  while(f1>>a)
-  {
-    ok=true;
-    if(a>max)
-      max=a;
-  }
-  if(ok)
-  cout<<"HighScore is : " << max<<endl;
-  else
-    cout<<"Not exists"<<endl;
-  return;
-}
-void file_clear()
-{
-  ofstream f1("file/Highscore.dat",ios::trunc);
-  f1.close();
-}
-void change_point()
-{  int temp;
-
-  cout<<"point of win: ";
-  cin>>temp;
-  GameCompetition::setwin(temp);
-  cout<<"point of draw: ";
-  cin>>temp;
-  GameCompetition::setdraw(temp);
-  cout<<"point of game over: ";
-  cin>>temp;
-  GameCompetition::setover(temp);
-  cout<<"Points is Changed"<<endl;
-  return;
-}
-void change_round()
-{
-  int temp;
-  cout<<"round of GamePrediction: ";
-  cin>>temp;
-  temp=(temp>50)?50:temp;
-  GameCompetition::setroundprediction(temp);
-  cout<<"round is Changed"<<endl;
-}
 int main()
 {
   srand(time(0));
@@ -97,15 +47,15 @@ int main()
       gp.preGame() ;
       break;
     }
-    case 4:Highscore(); break;
+    case 4:User::Highscore(); break;
     case 5: cout<<"Settings: "<<endl; int menu2;
       cout<<"0. First menu"<<endl<<"1. Delete scores"<<endl<<"2.Change point"<<endl<<"3.Change round of Prediction"<<endl;
       cin>>menu2;
       switch(menu2){
         case 0: menu = 0; printmenu(); break;
-        case 1: file_clear(); break;
-        case 2: change_point();break;
-        case 3: change_round();break;
+        case 1: User::file_clear(); break;
+        case 2: GameCompetition::change_point();break;
+        case 3: GameCompetition::change_round();break;
         default:
           cout<<"ERROR!"<<endl;break;
       }

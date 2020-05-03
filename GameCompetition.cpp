@@ -182,3 +182,28 @@ void GameCompetition::GameCompetition_funcinit()
     cout<<"Some problem is exist"<<endl;
   return;
 }
+
+void GameCompetition::change_point()
+{  int temp;
+
+  cout<<"point of win: ";
+  cin>>temp;
+  GameCompetition::setwin(temp);
+  cout<<"point of draw: ";
+  cin>>temp;
+  GameCompetition::setdraw(temp);
+  cout<<"point of game over: ";
+  cin>>temp;
+  GameCompetition::setover(temp);
+  cout<<"Points is Changed"<<endl;
+  return;
+}
+void GameCompetition::change_round()
+{
+  int temp;
+  cout<<"round of GamePrediction: ";
+  cin>>temp;
+  temp=(temp>50)?50:temp;
+  GameCompetition::setroundprediction(temp);
+  cout<<"round is Changed"<<endl;
+}

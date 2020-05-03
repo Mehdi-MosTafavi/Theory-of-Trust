@@ -17,13 +17,14 @@ public:
   Character getbot();
   bool action();
   static void bazi(Character &, Character &);
-
   void file_write(int );
   static void GameCompetition_funcinit();
   static void setroundprediction(int);
   static void setwin(int );
   static void setover(int );
   static void setdraw(int );
+  static void change_point();
+  static void change_round();
 private:
   int round;
   User utest;

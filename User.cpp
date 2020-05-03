@@ -39,6 +39,30 @@ int User::getpoint()
   return point;
 }
 std::vector<User> tester;
+void User::file_clear()
+{
+  ofstream f1("file/Highscore.dat",ios::trunc);
+  f1.close();
+}
+void User::Highscore()
+{
+  ifstream f1("file/Highscore.dat");
+  int a,max=0;
+  bool ok=false;
+  if(!f1)
+    exit(0);
+  while(f1>>a)
+  {
+    ok=true;
+    if(a>max)
+      max=a;
+  }
+  if(ok)
+  cout<<"HighScore is : " << max<<endl;
+  else
+    cout<<"Not exists"<<endl;
+  return;
+}
 bool isNumber(string s)//check inputed string is number or else
 {
     for (int i = 0; i < s.length(); i++)

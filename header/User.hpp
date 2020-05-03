@@ -13,6 +13,8 @@ public:
   string getphone();
   int getpoint();
   User(){}
+  static void file_clear();
+  static void Highscore();
   static void signup() ;
 
 private:
