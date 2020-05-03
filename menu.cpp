@@ -1,6 +1,6 @@
 void printmenu(){
   cout<<"0. First menu"<<endl
-  <<"1. Singup"<<endl
+  <<"1. Signup"<<endl
   <<"2. Play with a character"<<endl
   <<"3. Play with simulator"<<endl
   <<"4. Highscore"<<endl
