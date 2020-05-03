@@ -91,6 +91,14 @@ void GameCompetition::game()
   }
 bot.pointset(bot_point);
 utest.setpoint(tester_point);
+for(int i=0;i<tester.size();i++)
+{
+  if((tester[i].getphone())==utest.getphone())
+  {
+    tester[i]+tester_point;
+    break;
+  }
+}
 this->file_write(tester_point);
 this->print();
 }
