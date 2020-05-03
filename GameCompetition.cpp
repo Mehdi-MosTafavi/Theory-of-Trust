@@ -66,7 +66,7 @@ tester.setpoint(tester_point);
 this->print();
 }
 
-void GamePrediction::bazi(Character &a,Character &b)
+void GameCompetition::bazi(Character &a,Character &b)
 {
   std::vector<bool> a_history;
   std::vector<bool> b_history;
@@ -101,8 +101,8 @@ void GamePrediction::bazi(Character &a,Character &b)
 
 
 
-  a.setpoint(a_point);
-  b.setpoint(b_point);
+  a.pointset(a_point);
+  b.pointset(b_point);
 }
 void GameCompetition::print()
 {

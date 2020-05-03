@@ -23,7 +23,6 @@ private:
   User tester;
   Character bot;
   int bot_id;
-  Character a;
-  Character b;
+
 };
 #endif

@@ -8,6 +8,10 @@ public:
     static vector<Character> character;
     Character(const int,const string&);
     Character(const int);
+    Character()
+    {
+      
+    }
     int idreturn();
     int pointreturn();
     string namereturn();

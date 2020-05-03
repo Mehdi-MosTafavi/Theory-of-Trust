@@ -39,12 +39,11 @@ void file_init()
   ifstream f1("file/user.dat",ios::binary);
   if(!f1)
     exit(0);
-    while(!f1.eof())
+    while(f1 && !f1.eof())
     {
 
       User a;
   f1.read(reinterpret_cast<char*>(&a),sizeof(User));
-  // f1.seekg(sizeof(User),ios::cur);
   // tester.push_back(User(a.getname(),a.getfamily(),a.getphone()));
 cout<<"ok"<<endl;
 
