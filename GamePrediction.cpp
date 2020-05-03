@@ -17,6 +17,7 @@ GamePrediction::GamePrediction(int pr , int de , int gue , int chc[]) {
 GamePrediction GamePrediction::startPreGame() {
   int pr , de , gue ;
   int chc[8] ;
+  cout << "Insert character count" << endl ;
   for (int i = 0 ; i < 8 ; i++) {
     cout << Character::character[i].namereturn() << " : " ; ///////////// niazmand Edit , Temp ////////////////
     cin >> chc[i] ;

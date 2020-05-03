@@ -43,6 +43,7 @@ void User::file_clear()
 {
   ofstream f1("file/Highscore.dat",ios::trunc);
   f1.close();
+  cout << "Scores have been successfully deleted !!" << endl ;
 }
 void User::Highscore()
 {
@@ -58,7 +59,7 @@ void User::Highscore()
       max=a;
   }
   if(ok)
-  cout<<"HighScore is : " << max<<endl;
+  cout<<"HighScore is " << max<<endl;
   else
     cout<<"Not exists"<<endl;
   return;
@@ -130,8 +131,8 @@ void User::signup()
   {
     tester.push_back(User(name,family,phone));
     file_write(tester[tester.size()-1]);
-    cout<<"Registriation successful"<<endl;
+    cout<<"Registriation successful !!"<<endl;
   }
   else
-    cout<<"Register failed"<<endl;
+    cout<<"Registration failed !!"<<endl;
 }

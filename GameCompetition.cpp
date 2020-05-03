@@ -200,7 +200,7 @@ void GameCompetition::change_point()
   cout<<"point of lose: ";
   cin>>temp;
   GameCompetition::setover(temp);
-  cout<<"Point is Changed"<<endl;
+  cout<<"Point have been changed successfully !!"<<endl;
   return;
 }
 void GameCompetition::change_round()

@@ -3,7 +3,7 @@ void printmenu(){
   <<"1. Singup"<<endl
   <<"2. Play with a character"<<endl
   <<"3. Play with simulator"<<endl
-  <<"4. Highscores"<<endl
+  <<"4. Highscore"<<endl
   <<"5. Settings"<<endl
   <<"Enter menu code: ";
 }
