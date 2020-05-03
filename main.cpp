@@ -139,7 +139,7 @@ int main()
       cout<<"0. First menu"<<endl<<"1. Delete scores"<<endl<<"2.Change point"<<endl<<"3.Change round of Prediction"<<endl;
       cin>>menu2;
       switch(menu2){
-        case 0: menu = 0; break;
+        case 0: menu = 0; printmenu(); break;
         case 1: file_clear(); break;
         case 2: change_point();break;
         case 3: change_round();break;
@@ -149,6 +149,7 @@ int main()
     break;
     default: cout<<"ERROR!"<<endl; break;
   }
+
   }
 
   return 0;
