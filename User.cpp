@@ -71,7 +71,7 @@ void User::Highscore()
     {
       if((tester[i].getphone())==phone)
       {
-        cout<<"Your point :"<<tester[i].getpoint()<<endl;
+        cout<<"Your point : "<<tester[i].getpoint()<<endl;
         break;
       }
     }
