@@ -36,20 +36,23 @@ void file_write(User a)
 }
 void file_init()
 {
-  ifstream f1("file/user.dat",ios::binary);
+  ifstream f1("file/user.dat",ios::binary | ios::in);
   if(!f1)
+  {
     exit(0);
+  }
+    User a;
     while(f1 && !f1.eof())
     {
-
-      User a;
-  f1.read(reinterpret_cast<char*>(&a),sizeof(User));
-  // tester.push_back(User(a.getname(),a.getfamily(),a.getphone()));
 cout<<"ok"<<endl;
 
+  f1.read(reinterpret_cast<char*>(&a),sizeof(User));
+  // tester.push_back(User(a.getname(),a.getfamily(),a.getphone()));
+  // tester.push_back(a);
 }
-
   f1.close();
+  return;
+
 }
 void signup()
 {
@@ -122,7 +125,7 @@ void GameCompetition_func(){
 int main()
 {
   srand(time(0));
-  file_init();
+  // file_init();
   //Initializing Characters
   Character::character.emplace_back(0,"Masoom");
   Character::character.emplace_back(1,"Moqaled");
