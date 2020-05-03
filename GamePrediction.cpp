@@ -62,13 +62,13 @@ void GamePrediction::move(int cnt) {
 }
 void GamePrediction::print(int rn) {
   if (rn == 0){
-    cout << "\033[36m" << "Vaziate ebtedaei" << "\033[0m" << endl;
+    cout << "Vaziate ebtedaei" << endl;
   } else {
-    cout << "\033[36m" << "Rande " << "\033[0m";
+    cout <<  "Rande " ;
     if (rn == preRound) {
-      cout << "\033[35m" << rn << "\033[0m" << endl;
+      cout << rn << endl;
     } else {
-      cout << "\033[36m" << rn << "\033[0m" << endl;
+      cout << rn << endl;
     }
   }
   for (int i = 0 ; i<8 ; i++) {
@@ -81,11 +81,11 @@ void GamePrediction::print(int rn) {
       cout << "\t\t" ;
     }
     if (charCount[i]==lastCharCount[i]) {
-        cout << "\033[33m" << Character::character[i].namereturn() << " : " << charCount[i] << "\033[0m";
+        cout << Character::character[i].namereturn() << " : " << charCount[i];
     } else if (charCount[i]>lastCharCount[i]) {
-        cout << "\033[32m" << Character::character[i].namereturn() << " : " << charCount[i] << "\033[0m";
+        cout << Character::character[i].namereturn() << " : " << charCount[i] ;
     } else if (charCount[i]<lastCharCount[i]) {
-        cout << "\033[31m" << Character::character[i].namereturn() << " : " << charCount[i] << "\033[0m";
+        cout << Character::character[i].namereturn() << " : " << charCount[i] ;
     }
   }
   cout << endl ;
@@ -118,13 +118,13 @@ void GamePrediction::preGame(){
       maxi = i ;
     }
   }
-  cout << "\033[36m" << "The game has been finished !" << "\033[0m" << endl;
+  cout << "The game has been finished !" << endl;
   cout << "Winner : " ;
-  cout << "\033[32m" << Character::character[maxi].namereturn() << "\033[0m" << endl;
+  cout << Character::character[maxi].namereturn()  << endl;
   cout << "Your Guess : " ;
   if (guess == maxi) {
-    cout << "\033[32m" << Character::character[guess].namereturn() << "\033[0m" << endl;
+    cout << Character::character[guess].namereturn() << endl;
   } else {
-    cout << "\033[31m" << Character::character[guess].namereturn() << "\033[0m" << endl;
+    cout << Character::character[guess].namereturn() << endl;
   }
 }

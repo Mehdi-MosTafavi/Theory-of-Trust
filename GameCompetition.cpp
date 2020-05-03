@@ -113,6 +113,6 @@ void GameCompetition::bazi(Character &a,Character &b)
 }
 void GameCompetition::print()
 {
-  cout<<"\033[31m"<<"You played with "<<bot.namereturn()<<"'s character"<<"\033[0m"<<endl;
-  cout << "\033[36m" <<"Your point = "<<tester.getpoint()<<" Bot point = "<<bot.pointreturn()<< "\033[0m" <<endl;
+  cout<<"You played with "<<bot.namereturn()<<"'s character"<<endl;
+  cout <<"Your point = "<<tester.getpoint()<<" Bot point = "<<bot.pointreturn()<<endl;
 }

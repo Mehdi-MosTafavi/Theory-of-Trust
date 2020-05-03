@@ -125,6 +125,7 @@ void GameCompetition_func(){
 int main()
 {
   srand(time(0));
+  printmenu();
   // file_init();
   //Initializing Characters
   Character::character.emplace_back(0,"Masoom");
