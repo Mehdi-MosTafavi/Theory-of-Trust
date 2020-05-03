@@ -132,7 +132,7 @@ Character::game(const int id,Character& character,const vector<bool>& action){
 
 }
 vector<Character> Character::character;
-void Character::CharacterInit {
+void Character::CharacterInit() {
   Character::character.emplace_back(0,"Masoom");
   Character::character.emplace_back(1,"Moqaled");
   Character::character.emplace_back(2,"Moqaled Mehraboon");
