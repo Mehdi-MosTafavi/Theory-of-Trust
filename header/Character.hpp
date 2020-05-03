@@ -10,7 +10,7 @@ public:
     Character(const int);
     Character()
     {
-      
+
     }
     int idreturn();
     int pointreturn();
@@ -19,6 +19,7 @@ public:
     void pointset(const int);
     bool cheatedreturn();
     static bool game(const int,Character&,const vector<bool>&);
+    static void CharacterInit() ;
     ~Character();
 };
 #endif

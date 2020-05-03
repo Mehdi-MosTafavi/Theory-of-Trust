@@ -132,3 +132,13 @@ Character::game(const int id,Character& character,const vector<bool>& action){
 
 }
 vector<Character> Character::character;
+void Character::CharacterInit {
+  Character::character.emplace_back(0,"Masoom");
+  Character::character.emplace_back(1,"Moqaled");
+  Character::character.emplace_back(2,"Moqaled Mehraboon");
+  Character::character.emplace_back(3,"Kine ei");
+  Character::character.emplace_back(4,"Kargah");
+  Character::character.emplace_back(5,"Shansi");
+  Character::character.emplace_back(6,"Sade");
+  Character::character.emplace_back(7,"Moteqaleb");
+}
