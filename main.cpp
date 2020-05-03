@@ -24,17 +24,7 @@ int main()
 {
   srand(time(0));
   printmenu();
-  // file_init();
-  //Initializing Characters
-  Character::character.emplace_back(0,"Masoom");
-  Character::character.emplace_back(1,"Moqaled");
-  Character::character.emplace_back(2,"Moqaled Mehraboon");
-  Character::character.emplace_back(3,"Kine ei");
-  Character::character.emplace_back(4,"Kargah");
-  Character::character.emplace_back(5,"Shansi");
-  Character::character.emplace_back(6,"Sade");
-  Character::character.emplace_back(7,"Moteqaleb");
-
+  Character::CharacterInit();
   int menu = 0;
   while(cin>>menu){
   switch(menu){
@@ -62,7 +52,6 @@ int main()
     break;
     default: cout<<"ERROR!"<<endl; break;
   }
-
   }
 
   return 0;
