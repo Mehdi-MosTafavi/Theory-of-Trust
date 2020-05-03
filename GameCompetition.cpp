@@ -1,5 +1,7 @@
 
 #include "header/GameCompetition.hpp"
+int GameCompetition::round_prediction=8;
+
 GameCompetition::GameCompetition()
 {
   setround(8);
@@ -10,12 +12,15 @@ GameCompetition::GameCompetition(User u,Character c ,int i):tester(u),bot(c)
   // setbot(c);
   setround(rand()%4+5);
   bot_id=i;
+
 }
 void GameCompetition::setround(int r)
 {
   round=r;
 }
-
+int GameCompetition::point_win=3;
+int GameCompetition::point_over=-1;
+int GameCompetition::point_draw=2;
 int GameCompetition::getround()
 {
   return round;
@@ -23,6 +28,22 @@ int GameCompetition::getround()
 Character GameCompetition::getbot()
 {
   return bot;
+}
+void GameCompetition::setroundprediction(int rp)
+{
+  round_prediction=rp;
+}
+void GameCompetition::setwin(int w)
+{
+  point_win=w;
+}
+void GameCompetition::setover(int o)
+{
+  point_over=o;
+}
+void GameCompetition::setdraw(int d)
+{
+  point_draw=d;
 }
 bool GameCompetition::action()
 {
@@ -48,18 +69,18 @@ void GameCompetition::game()
     bot_action=bot.game(bot_id,bot,action_history);
     if(tester_action && bot_action)
     {
-      tester_point+=2;
-      bot_point+=2;
+      tester_point+=point_draw;
+      bot_point+=point_draw;
     }
     else if(tester_action && !bot_action)
     {
-      tester_point-=1;
-      bot_point+=3;
+      tester_point+=point_over;
+      bot_point+=point_win;
     }
     else if(!tester_action && bot_action)
     {
-      tester_point+=3;
-      bot_point-=1;
+      tester_point+=point_win;
+      bot_point+=point_over;
     }
 
   }
@@ -89,18 +110,18 @@ void GameCompetition::bazi(Character &a,Character &b)
 
   if(a_action && b_action)
   {
-    a_point+=2;
-    b_point+=2;
+    a_point+=point_draw;
+    b_point+=point_draw;
   }
   else if(a_action && !b_action)
   {
-    a_point-=1;
-    b_point+=3;
+    a_point+=point_over;
+    b_point+=point_win;
   }
   else if(!a_action && b_action)
   {
-    a_point+=3;
-    b_point-=1;
+    a_point+=point_win;
+    b_point-=point_over;
   }
 
 }
@@ -116,7 +137,6 @@ void GameCompetition::print()
   cout<<"\033[31m"<<"You played with "<<bot.namereturn()<<"'s character"<<"\033[0m"<<endl;
   cout << "\033[36m" <<"Your point = "<<tester.getpoint()<<" Bot point = "<<bot.pointreturn()<< "\033[0m" <<endl;
 }
-int GameCompetition::round_prediction=8;
 void GameCompetition::file_write(int a)
 {
   ofstream f1("file/Highscore.dat",ios::out | ios::app);

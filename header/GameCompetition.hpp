@@ -17,13 +17,21 @@ public:
   Character getbot();
   bool action();
   static void bazi(Character &, Character &);
-  static int round_prediction;
+
   void file_write(int );
+  static void setroundprediction(int);
+  static void setwin(int );
+  static void setover(int );
+  static void setdraw(int );
 private:
   int round;
   User tester;
   Character bot;
   int bot_id;
+    static int point_win;
+    static int point_over;
+    static int point_draw;
+    static int round_prediction;
 
 };
 #endif
