@@ -184,7 +184,7 @@ void GameCompetition::GameCompetition_funcinit()
     }
   }
   else
-    cout<<"Some problem is exist"<<endl;
+    cout<<"There is some problem !!"<<endl;
   return;
 }
 
