@@ -12,10 +12,8 @@ public:
   string getfamily();
   string getphone();
   int getpoint();
-  User()
-  {
-
-  }
+  User(){}
+  static void signup() ;
 
 private:
   string name;
