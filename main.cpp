@@ -1,6 +1,7 @@
 #include<iostream>
 #include<vector>
 #include<cstdlib>
+#include<fstream>
 #include<ctime>
 using namespace std;
 #include "User.cpp"
@@ -25,7 +26,32 @@ bool isstring(string s)//check inputed string is number or else
 
     return true;
 }
+void file_write(User a)
+{
+  ofstream f1("file/user.dat",ios::binary | ios::app);
+  if(!f1)
+    exit(0);
+  f1.write(reinterpret_cast<const char*>(&a),sizeof(User));
+  f1.close();
+}
+void file_init()
+{
+  ifstream f1("file/user.dat",ios::binary);
+  if(!f1)
+    exit(0);
+    while(!f1.eof())
+    {
 
+      User a;
+  f1.read(reinterpret_cast<char*>(&a),sizeof(User));
+  // f1.seekg(sizeof(User),ios::cur);
+  // tester.push_back(User(a.getname(),a.getfamily(),a.getphone()));
+cout<<"ok"<<endl;
+
+}
+
+  f1.close();
+}
 void signup()
 {
   string name,family,phone;
@@ -38,6 +64,7 @@ void signup()
   if(isstring(name) && isstring(family) && isNumber(phone))
   {
     tester.push_back(User(name,family,phone));
+    file_write(tester[tester.size()-1]);
     cout<<"Registriation successful"<<endl;
   }
   else
@@ -96,6 +123,7 @@ void GameCompetition_func(){
 int main()
 {
   srand(time(0));
+  file_init();
   //Initializing Characters
   Character::character.emplace_back(0,"Masoom");
   Character::character.emplace_back(1,"Moqaled");

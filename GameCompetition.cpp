@@ -1,5 +1,9 @@
 
 #include "header/GameCompetition.hpp"
+GameCompetition::GameCompetition()
+{
+  setround(10);
+}
 GameCompetition::GameCompetition(User u,Character c ,int i):tester(u),bot(c)
 {
   // settester(u);
@@ -11,14 +15,7 @@ void GameCompetition::setround(int r)
 {
   round=r;
 }
-// void GameCompetition::settester(User a)
-// {
-//   tester=a;
-// }
-// void GameCompetition::setbot(Character c)
-// {
-//   bot=c;
-// }
+
 int GameCompetition::getround()
 {
   return round;
@@ -67,6 +64,45 @@ void GameCompetition::game()
 bot.pointset(bot_point);
 tester.setpoint(tester_point);
 this->print();
+}
+
+void GamePrediction::bazi(Character &a,Character &b)
+{
+  std::vector<bool> a_history;
+  std::vector<bool> b_history;
+  int a_point=0,b_point=0;
+  for(int i=0;i<round;i++)
+  {
+
+  bool a_action,b_action;
+  a_action=a.game(a.idreturn(),a,b_history);
+  b_action=b.game(b.idreturn(),b,a_history);
+  a_history.push_back(a_action);
+  b_history.push_back(b_action);
+
+  if(a_action && b_action)
+  {
+    a_point+=2;
+    b_point+=2;
+  }
+  else if(a_action && !b_action)
+  {
+    a_point-=1;
+    b_point+=3;
+  }
+  else if(!a_action && b_action)
+  {
+    a_point+=3;
+    b_point-=1;
+  }
+
+}
+
+
+
+
+  a.setpoint(a_point);
+  b.setpoint(b_point);
 }
 void GameCompetition::print()
 {
